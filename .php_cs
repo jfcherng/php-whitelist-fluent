@@ -6,7 +6,8 @@ $config = PhpCsFixer\Config::create()
     ->setCacheFile(__DIR__ . '/.php_cs.cache')
     ->setRiskyAllowed(true)
     ->setRules([
-        '@PHP71Migration' => true,
+        '@PHP70Migration' => false,
+        '@PHP71Migration' => false,
         '@PSR2' => true,
         '@Symfony' => true,
         '@Symfony:risky' => true,
@@ -21,7 +22,7 @@ $config = PhpCsFixer\Config::create()
         'concat_space' => ['spacing' => 'one'],
         'fully_qualified_strict_types' => true,
         'linebreak_after_opening_tag' => true,
-        'list_syntax' => ['syntax' => 'short'],
+        'list_syntax' => ['syntax' => 'long'],
         'method_argument_space' => ['ensure_fully_multiline' => true],
         'native_constant_invocation' => true,
         'native_function_invocation' => true,
@@ -45,8 +46,8 @@ $config = PhpCsFixer\Config::create()
         'phpdoc_order' => true,
         'phpdoc_to_comment' => false,
         'phpdoc_types_order' => true,
-        'pow_to_exponentiation' => true,
-        'random_api_migration' => true,
+        'pow_to_exponentiation' => false,
+        'random_api_migration' => false,
         'single_line_comment_style' => true,
         'string_line_ending' => true,
         'strict_comparison' => false,

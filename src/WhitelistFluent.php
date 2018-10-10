@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Jfcherng\Utility;
 
 use ArrayAccess;
@@ -38,7 +36,7 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
      *
      * @param iterable $attributes
      */
-    public function __construct(iterable $attributes = [])
+    public function __construct($attributes = [])
     {
         $this
             ->updateCachedAllowedAttributeNames()
@@ -117,7 +115,7 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
      *
      * @return mixed
      */
-    public function get(string $key, $default = null)
+    public function get($key, $default = null)
     {
         if (isset($this->cachedAllowedAttributeNames[$key])) {
             return $this->attributes[$key];
@@ -131,7 +129,7 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
      *
      * @return array
      */
-    public function getAttributes(): array
+    public function getAttributes()
     {
         return $this->attributes;
     }
@@ -141,7 +139,7 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
      *
      * @return array names of allowed attributes
      */
-    public function getAllowedAttributes(): array
+    public function getAllowedAttributes()
     {
         return \array_keys($this->attributes);
     }
@@ -210,7 +208,7 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
      *
      * @return array
      */
-    public function toArray(): array
+    public function toArray()
     {
         return $this->getAttributes();
     }
@@ -222,7 +220,7 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
      *
      * @return string
      */
-    public function toJson(int $options = 0): string
+    public function toJson($options = 0)
     {
         return \json_encode($this->jsonSerialize(), $options);
     }
@@ -232,7 +230,7 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
      *
      * @return array
      */
-    public function jsonSerialize(): array
+    public function jsonSerialize()
     {
         return $this->toArray();
     }
@@ -245,7 +243,7 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
      *
      * @return self
      */
-    protected function init(): self
+    protected function init()
     {
         return $this;
     }
@@ -255,7 +253,7 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
      *
      * @return self
      */
-    protected function updateCachedAllowedAttributeNames(): self
+    protected function updateCachedAllowedAttributeNames()
     {
         $this->cachedAllowedAttributeNames = \array_fill_keys(
             $this->getAllowedAttributes(),
