@@ -1,0 +1,47 @@
+{
+    "name": "jfcherng/php-whitelist-fluent",
+    "description": "Base class for data structure with restricted attributes.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jack Cherng",
+            "email": "jfcherng@gmail.com"
+        }
+    ],
+    "keywords": [
+        "whitelist-fluent"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Jfcherng\\Utility\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Jfcherng\\Utility\\Test\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "require": {
+        "php": "^7.1.3"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.13",
+        "phan/phan": "^1.0",
+        "phpunit/phpunit": "^7.2"
+    },
+    "scripts": {
+        "analyze": [
+            "phan --color"
+        ],
+        "fix": [
+            "php-cs-fixer fix --verbose"
+        ],
+        "test": [
+            "phpunit --verbose"
+        ]
+    }
+}
