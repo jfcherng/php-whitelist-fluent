@@ -8,3 +8,7 @@
 
 # composer
 vendor/
+
+# git worktree
+/br-*
+/branch-*
