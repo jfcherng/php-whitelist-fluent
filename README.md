@@ -6,7 +6,7 @@ Base class for data structure with restricted attributes.
 # Installation
 
 ```
-$ composer require jfcherng/php-whitelist-fluent --no-dev
+$ composer require jfcherng/php-whitelist-fluent
 ```
 
 
