@@ -5,8 +5,11 @@ Base class for data structure with restricted attributes.
 
 # Installation
 
-```
-$ composer require jfcherng/php-whitelist-fluent
+```bash
+composer require jfcherng/php-whitelist-fluent
+
+# if PHP ^5.5 is used
+composer require jfcherng/php-whitelist-fluent:dev-php5
 ```
 
 
