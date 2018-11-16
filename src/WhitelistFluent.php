@@ -170,7 +170,7 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
     {
         if (!isset($this->cachedAllowedAttributeNames[$offset])) {
             throw new InvalidArgumentException(
-                __CLASS__ .
+                static::class .
                 " does not allowed attribute `{$offset}`. Allowed: " .
                 \implode(', ', $this->getAllowedAttributes())
             );
