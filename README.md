@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6780f76764da4d578f903680f3b90a11)](https://app.codacy.com/app/jfcherng/php-whitelist-fluent?utm_source=github.com&utm_medium=referral&utm_content=jfcherng/php-whitelist-fluent&utm_campaign=Badge_Grade_Dashboard)
 # php-whitelist-fluent [![Build Status](https://travis-ci.org/jfcherng/php-whitelist-fluent.svg?branch=master)](https://travis-ci.org/jfcherng/php-whitelist-fluent)
 
 Base class for data structure with restricted attributes.
