@@ -10,8 +10,10 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @coversNothing
+ *
+ * @internal
  */
-class WhitelistFluentTest extends TestCase
+final class WhitelistFluentTest extends TestCase
 {
     /**
      * @covers \Jfcherng\Utility\WhitelistFluent::__get
@@ -24,15 +26,15 @@ class WhitelistFluentTest extends TestCase
             'code' => 500,
         ]);
 
-        $this->assertSame(500, $wf->code);
-        $this->assertNull($wf->nonexistent);
+        static::assertSame(500, $wf->code);
+        static::assertNull($wf->nonexistent);
 
-        $this->assertSame(500, $wf->get('code'));
-        $this->assertNull($wf->get('nonexistent'));
-        $this->assertSame(':(', $wf->get('nonexistent', ':('));
+        static::assertSame(500, $wf->get('code'));
+        static::assertNull($wf->get('nonexistent'));
+        static::assertSame(':(', $wf->get('nonexistent', ':('));
 
-        $this->assertSame(500, $wf['code']);
-        $this->assertNull($wf['nonexistent']);
+        static::assertSame(500, $wf['code']);
+        static::assertNull($wf['nonexistent']);
     }
 
     /**
@@ -47,13 +49,13 @@ class WhitelistFluentTest extends TestCase
         ]);
 
         $wf->code(200);
-        $this->assertSame(200, $wf->code);
+        static::assertSame(200, $wf->code);
 
         $wf->code = 300;
-        $this->assertSame(300, $wf->code);
+        static::assertSame(300, $wf->code);
 
         $wf['code'] = 400;
-        $this->assertSame(400, $wf->code);
+        static::assertSame(400, $wf->code);
 
         $this->expectException(InvalidArgumentException::class);
         $wf->nonexistent('hello');
@@ -73,11 +75,11 @@ class WhitelistFluentTest extends TestCase
             'data' => [],
         ]);
 
-        $this->assertTrue(isset($wf->code));
-        $this->assertFalse(isset($wf->nonexistent));
+        static::assertTrue(isset($wf->code));
+        static::assertFalse(isset($wf->nonexistent));
 
-        $this->assertTrue(isset($wf['code']));
-        $this->assertFalse(isset($wf['nonexistent']));
+        static::assertTrue(isset($wf['code']));
+        static::assertFalse(isset($wf['nonexistent']));
     }
 
     /**
@@ -92,9 +94,10 @@ class WhitelistFluentTest extends TestCase
             'data' => [],
         ]);
 
-        unset($wf->code, $wf['msg']);
-        $this->assertNull($wf->code);
-        $this->assertNull($wf->msg);
+        $wf->code = null;
+        unset($wf['msg']);
+        static::assertNull($wf->code);
+        static::assertNull($wf->msg);
     }
 
     /**
@@ -110,7 +113,7 @@ class WhitelistFluentTest extends TestCase
 
         $wf = new ApiResponse($attrs);
 
-        $this->assertSame($attrs, $wf->getAttributes());
+        static::assertSame($attrs, $wf->getAttributes());
     }
 
     /**
@@ -126,7 +129,7 @@ class WhitelistFluentTest extends TestCase
 
         $wf = new ApiResponse($attrs);
 
-        $this->assertSame(\array_keys($attrs), $wf->getAllowedAttributes());
+        static::assertSame(\array_keys($attrs), $wf->getAllowedAttributes());
     }
 
     /**
@@ -142,7 +145,7 @@ class WhitelistFluentTest extends TestCase
 
         $wf = new ApiResponse($attrs);
 
-        $this->assertSame($attrs, $wf->toArray());
+        static::assertSame($attrs, $wf->toArray());
     }
 
     /**
@@ -158,7 +161,7 @@ class WhitelistFluentTest extends TestCase
 
         $wf = new ApiResponse($attrs);
 
-        $this->assertSame(\json_encode($attrs), $wf->toJson());
+        static::assertSame(\json_encode($attrs), $wf->toJson());
     }
 
     /**
@@ -174,6 +177,6 @@ class WhitelistFluentTest extends TestCase
 
         $wf = new ApiResponse($attrs);
 
-        $this->assertSame($attrs, $wf->jsonSerialize());
+        static::assertSame($attrs, $wf->jsonSerialize());
     }
 }
