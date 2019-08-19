@@ -1,12 +1,17 @@
-[![Build Status](https://travis-ci.org/jfcherng/php-whitelist-fluent.svg?branch=master)](https://travis-ci.org/jfcherng/php-whitelist-fluent)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6780f76764da4d578f903680f3b90a11)](https://app.codacy.com/app/jfcherng/php-whitelist-fluent?utm_source=github.com&utm_medium=referral&utm_content=jfcherng/php-whitelist-fluent&utm_campaign=Badge_Grade_Dashboard)
-
 # php-whitelist-fluent
+
+<a href="https://travis-ci.org/jfcherng/php-whitelist-fluent"><img alt="Travis (.org) branch" src="https://img.shields.io/travis/jfcherng/php-whitelist-fluent/master"></a>
+<a href="https://app.codacy.com/project/jfcherng/php-whitelist-fluent/dashboard"><img alt="Codacy grade" src="https://img.shields.io/codacy/grade/6780f76764da4d578f903680f3b90a11/master"></a>
+<a href="https://packagist.org/packages/jfcherng/php-whitelist-fluent"><img alt="Packagist" src="https://img.shields.io/packagist/dt/jfcherng/php-whitelist-fluent"></a>
+<a href="https://packagist.org/packages/jfcherng/php-whitelist-fluent"><img alt="Packagist Version" src="https://img.shields.io/packagist/v/jfcherng/php-whitelist-fluent"></a>
+<a href="https://github.com/jfcherng/php-whitelist-fluent/blob/master/LICENSE"><img alt="Project license" src="https://img.shields.io/github/license/jfcherng/php-whitelist-fluent"></a>
+<a href="https://github.com/jfcherng/php-whitelist-fluent/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/jfcherng/php-whitelist-fluent?logo=github"></a>
+<a href="https://www.paypal.me/jfcherng/5usd" title="Donate to this project using Paypal"><img src="https://img.shields.io/badge/paypal-donate-blue.svg?logo=paypal" /></a>
 
 Base class for data structure with restricted attributes.
 
 
-# Installation
+## Installation
 
 ```bash
 composer require jfcherng/php-whitelist-fluent
@@ -16,7 +21,7 @@ composer require jfcherng/php-whitelist-fluent:dev-php5
 ```
 
 
-# Example
+## Example
 
 ```php
 <?php
@@ -74,9 +79,3 @@ $jsonFlag = JSON_PRETTY_PRINT;
 $resp->toJson($jsonFlag);
 json_encode($resp, $jsonFlag);
 ```
-
-
-Supporters <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ATXYY9Y78EQ3Y" target="_blank"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" /></a>
-==========
-
-Thank you guys for sending me some cups of coffee.
