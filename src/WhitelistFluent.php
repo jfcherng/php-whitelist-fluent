@@ -35,8 +35,6 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
 
     /**
      * Create a new fluent container instance.
-     *
-     * @param iterable $attributes
      */
     public function __construct(iterable $attributes = [])
     {
@@ -112,8 +110,7 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
     /**
      * Get an attribute from the container.
      *
-     * @param string $key
-     * @param mixed  $default
+     * @param mixed $default
      *
      * @return mixed
      */
@@ -128,8 +125,6 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
 
     /**
      * Get the attributes from the container.
-     *
-     * @return array
      */
     public function getAttributes(): array
     {
@@ -169,11 +164,7 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
     public function offsetSet($offset, $value)
     {
         if (!isset($this->cachedAllowedAttributeNames[$offset])) {
-            throw new InvalidArgumentException(
-                static::class .
-                " does not allowed attribute `{$offset}`. Allowed: " .
-                \implode(', ', $this->getAllowedAttributes())
-            );
+            throw new InvalidArgumentException(static::class . " does not allowed attribute `{$offset}`. Allowed: " . \implode(', ', $this->getAllowedAttributes()));
         }
 
         $this->attributes[$offset] = $value;
@@ -207,8 +198,6 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
 
     /**
      * Convert the Fluent instance to an array.
-     *
-     * @return array
      */
     public function toArray(): array
     {
@@ -217,10 +206,6 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
 
     /**
      * Convert the Fluent instance to JSON.
-     *
-     * @param int $options
-     *
-     * @return string
      */
     public function toJson(int $options = 0): string
     {
@@ -229,8 +214,6 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
 
     /**
      * Convert the object into something JSON serializable.
-     *
-     * @return array
      */
     public function jsonSerialize(): array
     {
@@ -242,8 +225,6 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
      *
      * This method could be overriden to init objects for attributes.
      * You have to call updateCachedAllowedAttributeNames() if you add/remove an attribute.
-     *
-     * @return self
      */
     protected function init(): self
     {
@@ -252,8 +233,6 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
 
     /**
      * Update the cachedAllowedAttributeNames.
-     *
-     * @return self
      */
     protected function updateCachedAllowedAttributeNames(): self
     {
