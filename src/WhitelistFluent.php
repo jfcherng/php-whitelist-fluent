@@ -53,7 +53,7 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
      * @param string $method
      * @param array  $parameters
      *
-     * @return self
+     * @return static
      */
     public function __call($method, $parameters)
     {
@@ -225,6 +225,8 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
      *
      * This method could be overriden to init objects for attributes.
      * You have to call updateCachedAllowedAttributeNames() if you add/remove an attribute.
+     *
+     * @return static
      */
     protected function init(): self
     {
@@ -233,6 +235,8 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
 
     /**
      * Update the cachedAllowedAttributeNames.
+     *
+     * @return static
      */
     protected function updateCachedAllowedAttributeNames(): self
     {
