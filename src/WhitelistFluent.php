@@ -148,6 +148,7 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
      *
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return $this->get($offset);
@@ -161,6 +162,7 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
      *
      * @throws InvalidArgumentException if want to set an invalid attribute
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         if (!isset($this->cachedAllowedAttributeNames[$offset])) {
@@ -175,6 +177,7 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
      *
      * @param string $offset
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         try {
@@ -191,6 +194,7 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
      *
      * @return bool
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         return isset($this->cachedAllowedAttributeNames[$offset]);
