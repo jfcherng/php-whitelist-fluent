@@ -162,8 +162,7 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
      *
      * @throws InvalidArgumentException if want to set an invalid attribute
      */
-    #[\ReturnTypeWillChange]
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (!isset($this->cachedAllowedAttributeNames[$offset])) {
             throw new InvalidArgumentException(static::class . " does not allowed attribute `{$offset}`. Allowed: " . \implode(', ', $this->getAllowedAttributes()));
@@ -177,8 +176,7 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
      *
      * @param string $offset
      */
-    #[\ReturnTypeWillChange]
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         try {
             $this->offsetSet($offset, null);
@@ -194,8 +192,7 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
      *
      * @return bool
      */
-    #[\ReturnTypeWillChange]
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->cachedAllowedAttributeNames[$offset]);
     }
