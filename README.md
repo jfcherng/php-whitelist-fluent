@@ -1,6 +1,6 @@
 # php-whitelist-fluent
 
-[![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/jfcherng/php-whitelist-fluent/Main/master?style=flat-square)](https://github.com/jfcherng/php-whitelist-fluent/actions)
+[![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/jfcherng/php-whitelist-fluent/php.yml?branch=master&style=flat-square)](https://github.com/jfcherng/php-whitelist-fluent/actions)
 [![Packagist](https://img.shields.io/packagist/dt/jfcherng/php-whitelist-fluent?style=flat-square)](https://packagist.org/packages/jfcherng/php-whitelist-fluent)
 [![Packagist Version](https://img.shields.io/packagist/v/jfcherng/php-whitelist-fluent?style=flat-square)](https://packagist.org/packages/jfcherng/php-whitelist-fluent)
 [![Project license](https://img.shields.io/github/license/jfcherng/php-whitelist-fluent?style=flat-square)](https://github.com/jfcherng/php-whitelist-fluent/blob/master/LICENSE)
