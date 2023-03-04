@@ -13,7 +13,11 @@ Base class for data structure with restricted attributes.
 ## Installation
 
 ```bash
+# if PHP ^8.1 is used
 composer require jfcherng/php-whitelist-fluent
+
+# if PHP ^7.1.3 is used
+composer require jfcherng/php-whitelist-fluent:dev-php71
 
 # if PHP ^5.5 is used
 composer require jfcherng/php-whitelist-fluent:dev-php5

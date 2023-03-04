@@ -16,7 +16,7 @@ class ApiResponse extends WhitelistFluent
     /**
      * {@inheritdoc}
      */
-    protected $attributes = [
+    protected array $attributes = [
         'code' => 0,
         'msg' => '',
         'data' => [],

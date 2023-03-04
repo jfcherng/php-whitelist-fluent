@@ -4,21 +4,14 @@ declare(strict_types=1);
 
 namespace Jfcherng\Utility;
 
-use ArrayAccess;
-use Exception;
-use InvalidArgumentException;
-use JsonSerializable;
-
-class WhitelistFluent implements ArrayAccess, JsonSerializable
+class WhitelistFluent implements \ArrayAccess, \JsonSerializable
 {
     /**
      * All of the attributes set on the container.
      *
      * Child classes should override this propery.
-     *
-     * @var array
      */
-    protected $attributes = [
+    protected array $attributes = [
         // key => (default) value
     ];
 
@@ -27,9 +20,9 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
      *
      * Used to utilize isset() to check attribute availability.
      *
-     * @var array
+     * @var array<string,bool>
      */
-    protected $cachedAllowedAttributeNames = [
+    protected array $cachedAllowedAttributeNames = [
         // attribute name => true
     ];
 
@@ -40,7 +33,8 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
     {
         $this
             ->updateCachedAllowedAttributeNames()
-            ->init();
+            ->init()
+        ;
 
         foreach ($attributes as $key => $value) {
             $this->offsetSet($key, $value);
@@ -52,10 +46,8 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
      *
      * @param string $method
      * @param array  $parameters
-     *
-     * @return static
      */
-    public function __call($method, $parameters)
+    public function __call($method, $parameters): static
     {
         $this->offsetSet($method, \count($parameters) > 0 ? $parameters[0] : true);
 
@@ -66,21 +58,16 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
      * Dynamically retrieve the value of an attribute.
      *
      * @param string $key
-     *
-     * @return mixed
      */
-    public function __get($key)
+    public function __get($key): mixed
     {
         return $this->get($key);
     }
 
     /**
      * Dynamically set the value of an attribute.
-     *
-     * @param string $key
-     * @param mixed  $value
      */
-    public function __set($key, $value)
+    public function __set(string $key, mixed $value): void
     {
         $this->offsetSet($key, $value);
     }
@@ -89,32 +76,24 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
      * Dynamically check if an attribute is set.
      *
      * @param string $key
-     *
-     * @return bool
      */
-    public function __isset($key)
+    public function __isset($key): bool
     {
         return $this->offsetExists($key);
     }
 
     /**
      * Dynamically unset an attribute.
-     *
-     * @param string $key
      */
-    public function __unset($key)
+    public function __unset(string $key): void
     {
         $this->offsetUnset($key);
     }
 
     /**
      * Get an attribute from the container.
-     *
-     * @param mixed $default
-     *
-     * @return mixed
      */
-    public function get(string $key, $default = null)
+    public function get(string $key, mixed $default = null): mixed
     {
         if (isset($this->cachedAllowedAttributeNames[$key])) {
             return $this->attributes[$key];
@@ -138,18 +117,13 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
      */
     public function getAllowedAttributes(): array
     {
-        return \array_keys($this->attributes);
+        return array_keys($this->attributes);
     }
 
     /**
      * Get the value for a given offset.
-     *
-     * @param string $offset
-     *
-     * @return mixed
      */
-    #[\ReturnTypeWillChange]
-    public function offsetGet($offset)
+    public function offsetGet(mixed $offset): mixed
     {
         return $this->get($offset);
     }
@@ -157,15 +131,12 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
     /**
      * Set the value at the given offset.
      *
-     * @param string $offset
-     * @param mixed  $value
-     *
-     * @throws InvalidArgumentException if want to set an invalid attribute
+     * @throws \InvalidArgumentException if want to set an invalid attribute
      */
-    public function offsetSet($offset, $value): void
+    public function offsetSet(mixed $offset, mixed $value): void
     {
         if (!isset($this->cachedAllowedAttributeNames[$offset])) {
-            throw new InvalidArgumentException(static::class . " does not allowed attribute `{$offset}`. Allowed: " . \implode(', ', $this->getAllowedAttributes()));
+            throw new \InvalidArgumentException(static::class . " does not allowed attribute `{$offset}`. Allowed: " . implode(', ', $this->getAllowedAttributes()));
         }
 
         $this->attributes[$offset] = $value;
@@ -173,26 +144,20 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
 
     /**
      * Unset the value at the given offset.
-     *
-     * @param string $offset
      */
-    public function offsetUnset($offset): void
+    public function offsetUnset(mixed $offset): void
     {
         try {
             $this->offsetSet($offset, null);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             // be safe just like unset() even with an invalid attribute
         }
     }
 
     /**
      * Determine if the given offset exists.
-     *
-     * @param string $offset
-     *
-     * @return bool
      */
-    public function offsetExists($offset): bool
+    public function offsetExists(mixed $offset): bool
     {
         return isset($this->cachedAllowedAttributeNames[$offset]);
     }
@@ -210,7 +175,7 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
      */
     public function toJson(int $options = 0): string
     {
-        return \json_encode($this->jsonSerialize(), $options);
+        return json_encode($this->jsonSerialize(), $options);
     }
 
     /**
@@ -226,24 +191,20 @@ class WhitelistFluent implements ArrayAccess, JsonSerializable
      *
      * This method could be overriden to init objects for attributes.
      * You have to call updateCachedAllowedAttributeNames() if you add/remove an attribute.
-     *
-     * @return static
      */
-    protected function init(): self
+    protected function init(): static
     {
         return $this;
     }
 
     /**
      * Update the cachedAllowedAttributeNames.
-     *
-     * @return static
      */
-    protected function updateCachedAllowedAttributeNames(): self
+    protected function updateCachedAllowedAttributeNames(): static
     {
-        $this->cachedAllowedAttributeNames = \array_fill_keys(
+        $this->cachedAllowedAttributeNames = array_fill_keys(
             $this->getAllowedAttributes(),
-            true
+            true,
         );
 
         return $this;

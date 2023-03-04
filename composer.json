@@ -48,7 +48,7 @@
             "php-cs-fixer fix --verbose"
         ],
         "test": [
-            "phpunit --verbose"
+            "phpunit --display-warnings"
         ]
     }
 }
